@@ -23,8 +23,6 @@ public class PlaneController : MonoBehaviour {
         this._currentPosition = this._transform.position;
 
         this._playerInput = Input.GetAxis("Horizontal");
-        Debug.Log(this._playerInput);
-
         if(this._playerInput > 0)
         {
             this._currentPosition += new Vector2(this.speed, 0);
@@ -34,12 +32,26 @@ public class PlaneController : MonoBehaviour {
         {
             this._currentPosition -= new Vector2(this.speed, 0);
         }
-
         this._checkBoundsLeftRight();
+
+        this._playerInput = Input.GetAxis("Vertical");
+        if (this._playerInput > 0)
+        {
+            this._currentPosition += new Vector2(0, this.speed);
+        }
+
+        if (this._playerInput < 0)
+        {
+            this._currentPosition -= new Vector2(0, this.speed);
+        }
+        this._checkBoundsTopBottom();
+
         this._transform.position = this._currentPosition;
     }
 
-    //Private method
+
+
+    //Private method for left right
     private void _checkBoundsLeftRight()
     {
         // check if plane is going out of left boundary
@@ -55,4 +67,19 @@ public class PlaneController : MonoBehaviour {
         }
     }
 
+    //Private method for top bottom
+    private void _checkBoundsTopBottom()
+    {
+        // check if plane is going out of left boundary
+        if (this._currentPosition.y < -201)
+        {
+            this._currentPosition.y = -201;
+        }
+
+        // check if plane is going out of right boundary
+        if (this._currentPosition.y > 201)
+        {
+            this._currentPosition.y = 201;
+        }
+    }
 }
