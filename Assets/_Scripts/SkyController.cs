@@ -23,7 +23,7 @@ public class SkyController : MonoBehaviour {
         this._currentPosition -= new Vector2(this.speed, 0);
         this._transform.position = this._currentPosition;
 
-        if(this._currentPosition.x <= -890)
+        if(this._currentPosition.x <= -675)
         {
             this.Reset();
         }
@@ -31,6 +31,6 @@ public class SkyController : MonoBehaviour {
 
     void Reset()
     {
-        this._transform.position = new Vector2(-668f, 0);
+        this._transform.position = new Vector2(675f, 0);
     }
 }

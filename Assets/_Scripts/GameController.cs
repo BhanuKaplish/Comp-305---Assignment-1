@@ -2,7 +2,12 @@
 using System.Collections;
 
 public class GameController : MonoBehaviour {
+    //Private Instance variables
+    private int _scoreValue;
+    private int _livesValue;
 
+    //public Access methods
+    //public int ScoreValue
     //Public Indtance Variables
     public int asteroidNumber = 3;
     public AsteroidController asteroid;

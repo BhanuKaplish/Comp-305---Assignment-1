@@ -63,7 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\AsteroidController.cs" />
+    <Compile Include="Assets\_Scripts\CoinController.cs" />
     <Compile Include="Assets\_Scripts\GameController.cs" />
+    <Compile Include="Assets\_Scripts\PlaneCollider.cs" />
     <Compile Include="Assets\_Scripts\PlaneController.cs" />
     <Compile Include="Assets\_Scripts\SkyController.cs" />
   </ItemGroup>

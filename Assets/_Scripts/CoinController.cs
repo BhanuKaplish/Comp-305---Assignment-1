@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AsteroidController : MonoBehaviour {
+public class CoinController : MonoBehaviour {
 
     //PUBLIC VARIABLES
-    public float minVertSpeed = 5f;
-    public float maxVertSpeed = 10f;
+    public float minVertSpeed = 2f;
+    public float maxVertSpeed = 7f;
     public float minHoriSpeed = -2f;
     public float maxHoriSpeed = 2f;
 
@@ -28,11 +28,11 @@ public class AsteroidController : MonoBehaviour {
     void Update()
     {
         this._currentPosition = this._transform.position;
-        
+
         this._currentPosition -= new Vector2(this._horizontalSpeed, this._verticalDrift);
         this._transform.position = this._currentPosition;
 
-        if (this._currentPosition.x <= -364)
+        if (this._currentPosition.x <= -300)
         {
             this.Reset();
         }
@@ -41,7 +41,7 @@ public class AsteroidController : MonoBehaviour {
     void Reset()
     {
         float yPosition = Random.Range(-209f, 209f);
-        this._transform.position = new Vector2(600f, yPosition);
+        this._transform.position = new Vector2(400f, yPosition);
         this._horizontalSpeed = Random.Range(this.minVertSpeed, this.maxVertSpeed);
         this._verticalDrift = Random.Range(this.minHoriSpeed, this.maxHoriSpeed);
     }

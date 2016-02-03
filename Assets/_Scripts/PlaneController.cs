@@ -55,15 +55,15 @@ public class PlaneController : MonoBehaviour {
     private void _checkBoundsLeftRight()
     {
         // check if plane is going out of left boundary
-        if (this._currentPosition.x < -1036)
+        if (this._currentPosition.x < -260)
         {
-            this._currentPosition.x = -1036;
+            this._currentPosition.x = -260;
         }
 
         // check if plane is going out of right boundary
-        if (this._currentPosition.x > -516)
+        if (this._currentPosition.x > 260)
         {
-            this._currentPosition.x = -516;
+            this._currentPosition.x = 260;
         }
     }
 
