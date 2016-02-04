@@ -29,14 +29,28 @@ public class GameController : MonoBehaviour {
         {
             Debug.Log(this._livesValue);
             this._livesValue = value;
-            this.LivesLabel.text = "Lives: " + this._livesValue;
+            
+            if(this._livesValue <= 0)
+            {
+                this.LivesLabel.text = "Lives: 0";
+                this._endGame();
+            }
+            else
+            {
+                this.LivesLabel.text = "Lives: " + this._livesValue;
+            }
         }
     }
     //Public Instance Variables
     public int asteroidNumber = 4;
+    public PlaneController plane;
+    public CoinController coin;
     public AsteroidController asteroid;
     public Text LivesLabel;
     public Text ScoreLabel;
+    public Text GameOverLabel;
+    public Text HighscoreLabel;
+    public Button RestartButton;
 
 	// Use this for initialization
 	void Start () {
@@ -54,9 +68,30 @@ public class GameController : MonoBehaviour {
     {
         this._livesValue = 5;
         this._scoreValue = 0;
-        for(int asteroidCount = 0; asteroidCount < this.asteroidNumber; asteroidCount++)
+        this.GameOverLabel.enabled = false;
+        this.HighscoreLabel.enabled = false;
+        this.RestartButton.gameObject.SetActive(false);
+
+        for (int asteroidCount = 0; asteroidCount < this.asteroidNumber; asteroidCount++)
         {
             Instantiate(asteroid.gameObject);
         }
+        
+    }
+    private void _endGame()
+    {
+        this.HighscoreLabel.text = "Highscore : " + this._scoreValue;     
+        this.GameOverLabel.enabled = true;
+        this.HighscoreLabel.enabled = true;
+        this.LivesLabel.enabled = false;
+        this.ScoreLabel.enabled = false;
+        this.plane.gameObject.SetActive(false);
+        this.coin.gameObject.SetActive(false);
+        this.RestartButton.gameObject.SetActive(false);
+    }
+    //Public methods
+    public void RestartButtonClick()
+    {
+        Application.LoadLevel("Main");
     }
 }
