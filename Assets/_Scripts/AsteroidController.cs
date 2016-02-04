@@ -4,7 +4,7 @@ using System.Collections;
 public class AsteroidController : MonoBehaviour {
 
     //PUBLIC VARIABLES
-    public float minVertSpeed = 5f;
+    public float minVertSpeed = 7f;
     public float maxVertSpeed = 10f;
     public float minHoriSpeed = -2f;
     public float maxHoriSpeed = 2f;

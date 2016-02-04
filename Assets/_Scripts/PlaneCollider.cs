@@ -6,6 +6,9 @@ public class PlaneCollider : MonoBehaviour {
     private AudioSource[] _audioSources;
     private AudioSource _asteroidSound;
     private AudioSource _coinSound;
+
+    //Public Instance variables
+    public GameController gameController; 
     
 	// Use this for initialization
 	void Start () {
@@ -24,11 +27,13 @@ public class PlaneCollider : MonoBehaviour {
        if(other.gameObject.CompareTag("Asteroid"))
         {
             this._asteroidSound.Play();
+            this.gameController.livesValue -= 1;
         }
         if (other.gameObject.CompareTag("Coin"))
         {
             this._coinSound.Play();
-            Debug.Log("Coin sound");
+            this.gameController.ScoreValue += 100;
         }
+
     }
 }
