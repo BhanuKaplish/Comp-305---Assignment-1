@@ -6,6 +6,9 @@ public class GameController : MonoBehaviour {
     //Private Instance variables
     private int _scoreValue;
     private int _livesValue;
+    [SerializeField]
+    private AudioSource _gameoverSound;
+
 
     //public Access methods
     public int ScoreValue
@@ -27,7 +30,7 @@ public class GameController : MonoBehaviour {
         }
         set
         {
-            Debug.Log(this._livesValue);
+            //Debug.Log(this._livesValue);
             this._livesValue = value;
             
             if(this._livesValue <= 0)
@@ -52,8 +55,8 @@ public class GameController : MonoBehaviour {
     public Text HighscoreLabel;
     public Button RestartButton;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         initialize();
 	
 	}
@@ -87,7 +90,8 @@ public class GameController : MonoBehaviour {
         this.ScoreLabel.enabled = false;
         this.plane.gameObject.SetActive(false);
         this.coin.gameObject.SetActive(false);
-        this.RestartButton.gameObject.SetActive(false);
+        this.RestartButton.gameObject.SetActive(true);
+        this._gameoverSound.Play();
     }
     //Public methods
     public void RestartButtonClick()
